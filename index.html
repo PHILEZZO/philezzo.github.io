@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Literary Works</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: #f9f7f1;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #d4a76a;
+        }
+        h1 {
+            color: #8b4513;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-style: italic;
+            color: #666;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+        .book-title {
+            color: #8b4513;
+            margin: 15px 0 10px;
+            font-size: 1.3em;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #8b4513;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #a0522d;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+            color: #777;
+        }
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 [Your Name]'s Literary Collection</h1>
+        <p class="tagline">Poetry, Books, and Creative Writings</p>
+    </header>
+
+    <div class="container" id="books-container">
+        <!-- Books will be added here automatically -->
+    </div>
+
+    <footer>
+        <p>© [Year] [Your Name]. All rights reserved.</p>
+        <p>Contact: [your-email@example.com]</p>
+    </footer>
+
+    <script>
+        // Your books data
+        const books = [
+            {
+                title: "Book Title 1",
+                description: "A collection of poems about...",
+                pdfUrl: "URL_TO_YOUR_PDF_1",
+                coverColor: "#f5e9d9"
+            },
+            {
+                title: "Book Title 2",
+                description: "My first novel exploring...",
+                pdfUrl: "URL_TO_YOUR_PDF_2",
+                coverColor: "#e1d5e7"
+            },
+            // Add more books here
+        ];
+
+        const container = document.getElementById('books-container');
+        
+        books.forEach(book => {
+            const card = document.createElement('div');
+            card.className = 'book-card';
+            card.style.borderTop = `5px solid ${book.coverColor}`;
+            
+            card.innerHTML = `
+                <div style="font-size: 3em; color: ${book.coverColor}">📖</div>
+                <h2 class="book-title">${book.title}</h2>
+                <p>${book.description}</p>
+                <a href="${book.pdfUrl}" class="download-btn" target="_blank">
+                    Read / Download PDF
+                </a>
+            `;
+            
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
